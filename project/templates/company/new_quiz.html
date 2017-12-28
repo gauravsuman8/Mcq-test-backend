@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  </head>
+  <body>
+    <nav style="background-color: #2e6da4;width:100%;color:white">
+    <div class="row">
+    <span class="logo navbar-brand pull-left">
+        Quiz !t
+    </span>
+            <span class="col-sm-offset-4">
+                <span class="glyphicon glyphicon-user"></span>
+                <span>{{ request.user.username }}</span>
+                <a href="/quiz/logout/" id="log-out" style="text-decoration: none;color:white">log out</a>
+            </span>
+            <span class="col-sm-4"></span>
+    </div>
+    </nav>
+    <form action="{% url 'company:add_question' %}" method = "post">
+    <div class="panel panel-default col-sm-8 col-sm-offset-2">
+      <div class="panel-heading h2">
+        <input type="text" name="question" class="form-control" placeholder="Question"/>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li ><input type="text" placeholder="1" class="form-control"  name="option1"/></li>
+          <li ><input type="text" placeholder="2" class="form-control" name="option2" /></li>
+          <li ><input type="text" placeholder="3" class="form-control" name="option3" /></li>
+          <li ><input type="text" placeholder="4" class="form-control" name="option4" /></li>
+        </ul>
+      </div>
+          <input type="text" class="form-control" name="answer" placeholder="answer"/>
+    </div>
+
+        {% csrf_token %}
+        <input type="submit" name="upvote" value="Upvote"/>
+    <a href="{% url 'company:add_question' %}" >Submit</a>
+    </form>
+  </body>
+</html>

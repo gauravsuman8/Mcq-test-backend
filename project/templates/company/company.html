@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="jumbotron">
+      <h1>Please Login</h1>
+      <form method="post">
+        {% csrf_token %}
+        <label for="email">email:</label>
+        <input type="text" name="email" placeholder="Enter Email">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+
+        <input type="submit" name="" value="Login">
+      </form>
+
+    </div>
+
+  </body>
+</html>
