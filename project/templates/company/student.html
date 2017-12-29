@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  </head>
+  <body>
+    <nav style="background-color: #2e6da4;width:100%;color:white">
+    <div class="row">
+    <span class="logo navbar-brand pull-left">
+        Quiz !t
+    </span>
+            <span class="col-sm-offset-4">
+                <span class="glyphicon glyphicon-user"></span>
+                <span>{{ request.user.username }}</span>
+                <a href="/quiz/logout/" id="log-out" style="text-decoration: none;color:white">log out</a>
+            </span>
+            <span class="col-sm-4"></span>
+    </div>
+    </nav>
+    <form method="post">
+    <label>Student Name</label>
+    <input type="text" name="student_name">
+    <label>Student Email</label>
+    <input type="text" name="student_email">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="submit">
+  </form>
+  </body>
+</html>

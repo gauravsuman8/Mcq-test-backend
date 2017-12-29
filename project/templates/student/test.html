@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  </head>
+  <body>
+    Hi this is test page
+    {% for x in lis %}
+    <div class="form-group">
+  <label for="Question">Question:</label>
+  <textarea class="form-control" rows="5" id="comment" readonly>{{x.question}}</textarea>
+  <div class="radio">
+  <label><input type="radio" name="optradio">{{x.option1}}</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="optradio">{{x.option2}}</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="optradio">{{x.option3}}</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="optradio">{{x.option4}}</label>
+</div>
+  <button type="button" class="btn btn-primary">Submit</button>
+  {% endfor %}
+</div>
+  </body>
+
+</html>

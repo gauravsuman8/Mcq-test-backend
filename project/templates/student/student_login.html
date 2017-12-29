@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1> Welocome Student</h1>
+    <h2> Please Login <h2>
+      <form method="post">
+      <label>Email</label>
+      <input type="text" name="stud_email" value="">
+      <label>Password</label>
+      <input type="password" name="stud_pass" value="">
+      {% csrf_token %}
+        <input type="submit" name="submit" value="submit">
+    </form>
+  </body>
+</html>

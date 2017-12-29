@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
-from company.models import Question, Exam
+from company.models import Question, Exam, Student
 import random
 import string
 
@@ -25,6 +25,7 @@ def company(request):
         if user:
             if user.is_active:
                 login(request,user)
+
                 return success(request)
 
             else:
@@ -76,3 +77,22 @@ def add_question(request):
         q.exam = Exam.objects.get(user=request.user)
         q.save()
         return HttpResponse("success")
+        
+@login_required
+def add_student(request):
+
+    if request.method == 'POST':
+        name = request.POST.get("student_name")
+        email = request.POST.get("student_email")
+        added_by = request.user.username
+        password = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+        s = Student()
+        s.name = name
+        s.email = email
+        s.added_by = added_by
+        s.password = password
+        s.save()
+
+        return HttpResponse('Successfully added student')
+    else:
+        return render(request,'company/student.html')
