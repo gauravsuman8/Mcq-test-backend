@@ -19,25 +19,39 @@
             <span class="col-sm-4"></span>
     </div>
     </nav>
-    <form action="{% url 'company:add_question' %}" method = "post">
+    <form action="{% url 'company:new_quiz' %}" method = "post">
     <div class="panel panel-default col-sm-8 col-sm-offset-2">
       <div class="panel-heading h2">
-        <input type="text" name="question" class="form-control" placeholder="Question"/>
+        <input type="text" name="question1" class="form-control" placeholder="Question"/>
       </div>
       <div class="panel-body">
         <ul class="list-group">
-          <li ><input type="text" placeholder="1" class="form-control"  name="option1"/></li>
-          <li ><input type="text" placeholder="2" class="form-control" name="option2" /></li>
-          <li ><input type="text" placeholder="3" class="form-control" name="option3" /></li>
-          <li ><input type="text" placeholder="4" class="form-control" name="option4" /></li>
+          <li ><input type="text" placeholder="1" class="form-control"  name="option1a"/></li>
+          <li ><input type="text" placeholder="2" class="form-control" name="option1b" /></li>
+          <li ><input type="text" placeholder="3" class="form-control" name="option1c" /></li>
+          <li ><input type="text" placeholder="4" class="form-control" name="option1d" /></li>
         </ul>
       </div>
-          <input type="text" class="form-control" name="answer" placeholder="answer"/>
+          <input type="text" class="form-control" name="answer1" placeholder="answer"/>
+    </div>
+    <div class="panel panel-default col-sm-8 col-sm-offset-2">
+      <div class="panel-heading h2">
+        <input type="text" name="question2" class="form-control" placeholder="Question"/>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li ><input type="text" placeholder="1" class="form-control"  name="option2a"/></li>
+          <li ><input type="text" placeholder="2" class="form-control" name="option2b" /></li>
+          <li ><input type="text" placeholder="3" class="form-control" name="option2c" /></li>
+          <li ><input type="text" placeholder="4" class="form-control" name="option2d" /></li>
+        </ul>
+      </div>
+          <input type="text" class="form-control" name="answer2" placeholder="answer"/>
     </div>
 
         {% csrf_token %}
         <input type="submit" name="upvote" value="Upvote"/>
-    <a href="{% url 'company:add_question' %}" >Submit</a>
+    <a href="{% url 'company:new_quiz' %}" method="post">Submit</a>
     </form>
   </body>
 </html>
