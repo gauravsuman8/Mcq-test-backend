@@ -18,37 +18,32 @@
             </span>
             <span class="col-sm-4"></span>
     </div>
-    </nav>
+  </nav>
+    {% for i in "x"|ljust:t_q %}
     <form action="{% url 'company:new_quiz' %}" method = "post">
+      {% with y=forloop.counter|stringformat:"s" %}
+      {% with o="option"|add:y %}
+      {% with o1=o|add:"a" o2=o|add:"b" o3=o|add:"c" o4=o|add:"d" %}
+      {% with ans="answer"|add:y  q="question"|add:y %}
     <div class="panel panel-default col-sm-8 col-sm-offset-2">
       <div class="panel-heading h2">
-        <input type="text" name="question1" class="form-control" placeholder="Question"/>
+        <input type="text" name={{q}} class="form-control" placeholder="Question"/>
       </div>
       <div class="panel-body">
         <ul class="list-group">
-          <li ><input type="text" placeholder="1" class="form-control"  name="option1a"/></li>
-          <li ><input type="text" placeholder="2" class="form-control" name="option1b" /></li>
-          <li ><input type="text" placeholder="3" class="form-control" name="option1c" /></li>
-          <li ><input type="text" placeholder="4" class="form-control" name="option1d" /></li>
+          <li ><input type="text" placeholder="1" class="form-control" name={{o1}} /></li>
+          <li ><input type="text" placeholder="2" class="form-control" name={{o2}} /></li>
+          <li ><input type="text" placeholder="3" class="form-control" name={{o3}} /></li>
+          <li ><input type="text" placeholder="4" class="form-control" name={{o4}} /></li>
         </ul>
       </div>
-          <input type="text" class="form-control" name="answer1" placeholder="answer"/>
+          <input type="text" class="form-control" name={{ans}} placeholder="answer"/>
     </div>
-    <div class="panel panel-default col-sm-8 col-sm-offset-2">
-      <div class="panel-heading h2">
-        <input type="text" name="question2" class="form-control" placeholder="Question"/>
-      </div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <li ><input type="text" placeholder="1" class="form-control"  name="option2a"/></li>
-          <li ><input type="text" placeholder="2" class="form-control" name="option2b" /></li>
-          <li ><input type="text" placeholder="3" class="form-control" name="option2c" /></li>
-          <li ><input type="text" placeholder="4" class="form-control" name="option2d" /></li>
-        </ul>
-      </div>
-          <input type="text" class="form-control" name="answer2" placeholder="answer"/>
-    </div>
-
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endfor %}
         {% csrf_token %}
         <input type="submit" name="upvote" value="Upvote"/>
     <a href="{% url 'company:new_quiz' %}" method="post">Submit</a>

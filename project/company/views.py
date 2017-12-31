@@ -13,7 +13,7 @@ def index(request):
 
 @login_required
 def success(request):
-    return render(request,'company/success.html')
+    return HttpResponseRedirect('/company/dashboard/')
 
 def company(request):
 
@@ -44,7 +44,13 @@ def dashboard(request):
     date_dict={'user': request.user.username}
     return render(request,'company/dashboard.html',context=date_dict)
 
-
+def tot_quest(request):
+    if request.method == 'POST':
+        request.session['no_of_quest']=request.POST.get("quantity")
+        print type(request.session['no_of_quest'])
+        return HttpResponseRedirect('/company/new_quiz')
+    else:
+        return render(request,'company/no_of_questions.html')
 def add_exam(request):
     if request.method == 'POST':
         try:
@@ -71,7 +77,7 @@ def add_exam(request):
             q1.option2 = option1b
             q1.option3 = option1c
             q1.option4 = option1d
-            q1.answer1 = answer1
+            q1.answer = answer1
             print option1a,question1
             q1.exam = Exam.objects.get(user=request.user)
             q1.save()
@@ -87,12 +93,13 @@ def add_exam(request):
             q2.option2 = option2b
             q2.option3 = option2c
             q2.option4 = option2d
-            q2.answer2 = answer2
+            q2.answer = answer2
             q2.exam = Exam.objects.get(user=request.user)
             q2.save()
             return HttpResponse('success')
     else:
-        return render(request,'company/new_quiz.html')
+        y=str(request.session['no_of_quest'])
+        return render(request,'company/new_quiz.html',{'t_q':y})
 
 
 @login_required
